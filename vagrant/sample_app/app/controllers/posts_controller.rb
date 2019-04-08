@@ -34,6 +34,9 @@ class PostsController < ApplicationController
     redirect_to post_path(post.id)
   end
 
+  def destroy
+  end
+
   private
   def post_params
   	params.require(:post).permit(:title, :body, :image)
