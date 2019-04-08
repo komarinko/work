@@ -5,16 +5,23 @@ class PostsController < ApplicationController
   end
 
   def create
-  	#ストロングパラメータを使用
-  	post = Post.new(post_params)
-  	#DBへ保存する
-  	post.save
-  	#トップ画面へリダイレクト
-  	redirect_to '/top'
+    #ストロングパラメータを使用
+    post = Post.new(post_params)
+    #DBへ保存する
+    post.save
+    #トップ画面へリダイレクト
+    #redirect_to '/top'
+    redirect_to post_path(post.id) # 詳細画面へリダイレクト
   end
 
+#投稿全て取り出し
+#viewに表示させるなら@がいる
   def index
     @posts = Post.all
+  end
+
+  def show
+    @post = Post.find(params[:id])
   end
 
   private
